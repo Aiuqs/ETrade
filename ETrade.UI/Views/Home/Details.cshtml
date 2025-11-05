@@ -1,0 +1,44 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <img width="50%" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Image)" alt="" class="img-fluid rounded-3"/>
+    </div>
+    <div class="col-md-6">
+        <h1>@Model.Name</h1>
+        <span class="badge text-primary">@Model.Stock</span>
+        <span class="badge text-second">#@(new Random().Next(100000,999999))</span>
+        <div class="mt-1">
+            <p class="lead">
+                @Model.Description
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-warning">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <span class="badge text-success">60</span>
+            </div>
+            <div class="col-md-8">
+                <p class="lead">
+                    <a href="" class="text-decoration-none">Read a review</a>
+                </p>
+            </div>
+        </div>
+        <div class="mb-1">
+            <span class="badge text-danger fs-4 fm-bold rounded">@Model.Price.ToString("c")</span>
+        </div>
+        <div>
+            <a asp-action="Buy" asp-controller="Cart" asp-route-id="@Model.Id" class="btn btn-success">
+                <i class="fa-solid fa-cart-plus"></i>
+                <span class="badge">Add To Cart</span>
+            </a>
+        </div>
+    </div>
+</div>
